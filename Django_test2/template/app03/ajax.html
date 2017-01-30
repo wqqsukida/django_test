@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<div>
+		<input id="vol" type="text"  />
+	</div>
+	<div>
+		<input type="button" value="Ajax" onclick="DoAjax();"/>
+	</div>
+	<script src="/static/js/jquery-3.1.1.js"></script>
+    <script type="text/javascript">
+		function DoAjax(){
+			var temp = $('#vol').val();
+			$.ajax({
+				url:'',
+				type:'POST', // url,type,data表示以POST方式传给后端temp数据 
+				data:{data:temp},   
+				success:function(arg){ //这里的arg是后端返回的数据HttpResponse(json.dumps(data))
+					var obj = jQuery.parseJSON(arg); //将后端返回的数据反序列化js可识别格式	
+					/*
+					console.log(obj);
+					console.log(obj.msg);
+					console.log('success');
+					*/
+					$('#vol').val(obj.msg);  //
+				},
+				error:function(){
+					console.log('failed')
+				},
+			});
+		};   		
+    
+    </script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<style>
+		.add{
+			margin:20px;
+			padding: 20px;
+			border:1px solid #ddd;
+		}
+		
+		.list{
+			padding: 20px;
+			margin:20px;
+			border:1px solid #ddd;
+		}
+	</style>
+</head>
+<body>
+	<div class="add">
+		<h3>添加主机</h3>
+		<h6 style="color:red;">{{status}}</h6>
+		<form action="/app01/host/" method="POST">
+			<p><input name="hostname" placeholder="主机名"></p>
+			<p><input name="ip" placeholder="ip地址"></p>
+			<p>
+				<select name="group">  <!-- 这里取到传给request.POST.get('group',None)值是value="{{ item.id }}" -->
+					{% for item in group %}  <!-- 遍历ret字典里的group的值（也就是遍历Group表里所有数据） -->
+						<option value="{{ item.id }}">{{ item.group_name }}</option>
+					{% endfor %}
+				</select>
+			</p>
+			<p><input type="submit" value="添加"></p>
+		</form>
+	</div>
+	
+	<div class="list">
+		<h3>主机列表</h3>
+		<table border="1">
+			<tr>
+				<td>主机名</td>
+				<td>IP</td>
+				<td>用户组ID</td>
+				<td>所属用户组</td>
+			</tr>
+			{% for item in data %}
+				<tr>
+					<td>{{ item.hostname }}</td>
+					<td>{{ item.ip }}</td>
+					<td>{{ item.user_group.id }}</td>
+					<td>{{ item.user_group.group_name }}</td>
+				</tr>
+			{% endfor %}		
+		</table>
+	</div>
+	
+</body>
+</html>

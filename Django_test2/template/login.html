@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Login</title>
+</head>
+<body>
+
+	<form action='/app01/login/' method='POST'>
+		<div>
+			<div>
+				<input name='username' placeholder="用户名"/>
+			</div>
+			<div>
+				<input name='password' type='password' placeholder="密码"/>
+			</div>
+			<div>
+				<input type='submit' value='提交' /><span style='color:red;'>{{status}}</span>
+			</div>
+		</div>		
+	</form>	
+</body>
+</html>

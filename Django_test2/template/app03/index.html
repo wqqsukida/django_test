@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<style type="text/css">
+		.form-control{
+		    background-color:rgb(235, 236, 234);font-size:18px;border:1px sold #fff;
+		}
+	</style>
+</head>
+<body>
+	<form action="/app03/index/" method="POST">
+		<p>请输入用户名：</p>
+		<div>
+			{{ data.username }}
+		</div>
+		<p>请输入邮箱：</p>
+		<div>
+			{{ data.email }}
+		</div>
+		</br>
+		<div>
+			<input type='submit' value='提交' />
+			<!-- <span style='color:red;'>{{ error.as_ul }}</span> --> <!-- errorObj -->
+			<span style='color:red;'>{{ error }}</span> <!-- FristErrorMsg -->
+		</div>
+	</form>
+	
+</body>
+</html>
