@@ -1,0 +1,15 @@
+<!-- 这是母板 -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>模板语言</title>
+</head>
+<body>
+	<div>公用的头部</div>
+	<div>
+		{% block content %}{% endblock %} <!-- 设置为母板文件content -->
+	</div>
+	<div>公用的底部</div>
+</body>
+</html>

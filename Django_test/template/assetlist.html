@@ -1,0 +1,34 @@
+{% extends "master/layout.html" %}  <!-- 调用母板 -->
+	
+{% load Elaine %} <!-- 调用自定义帮助方法Elaine -->
+
+{% block content %} <!-- 调用母板content -->
+	<h1>{{ user }}</h1> 
+		
+		<table border='1'>
+			{% for item in data %}  <!--模板语言for循环 -->
+			<tr> 	<!--遍历数据库里获得的data到每一行，然后获取每一列到列  -->
+				<td>{{item.id}}</td>
+				<td>{% mymethod item.id %}</td> <!-- 调用自定义帮助方法Elaine中的mymethod函数应用到item.id上 -->
+				<td>{{item.user_name}}</td>
+				<td>{{item.create_date|date:"Y-m-d H:i:s"}}</td>
+				<td>{{item.change_date|date:"Y-m-d H:i:s"}}</td> <!--应用模板语言的帮助方法改变date格式 -->
+			</tr>
+			{% endfor %}		
+		</table>
+		{% if user %}	<!--模板语言if,else -->
+				<h2>真</h2>
+			{% else %}
+				<h2>假</h2>
+			{% endif %}
+			
+			{% ifequal user 'Elaine' %}
+				<h2>是Elaine</h2>
+			{% else %}
+				<h2>不是Elaine</h2>
+			{% endifequal %}
+
+{% endblock %}
+
+
+
